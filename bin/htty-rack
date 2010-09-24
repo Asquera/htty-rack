@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+gem 'htty'
+require 'htty'
+
+require File.expand_path("#{File.dirname __FILE__}/../lib/htty/rack")
+
+HTTY::Rack::CLI.new(ARGV).run!
