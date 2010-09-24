@@ -2,29 +2,29 @@ class HTTY::CLI::Commands::Config < HTTY::CLI::Command
 
   include HTTY::CLI::CookieClearingCommand
 
-  # Returns the name of a category under which help for the _app_ command
+  # Returns the name of a category under which help for the _config_ command
   # should appear.
   def self.category
     'Rack'
   end
 
-  # Returns the arguments for the command-line usage of the _app_ command.
+  # Returns the arguments for the command-line usage of the _config_ command.
   def self.command_line_arguments
     'config'
   end
 
-  # Returns the help text for the _app_ command.
+  # Returns the help text for the _config_ command.
   def self.help
     'Loads a new config'
   end
 
-  # Returns the extended help text for the _app_ command.
+  # Returns the extended help text for the _config_ command.
   def self.help_extended
     'Loads a config (.ru-File) and sets the built class as the' +
     'active application. This operation clears cookies.'
   end
 
-  # Performs the _app_ command.
+  # Performs the _config_ command.
   def perform
     unless arguments.length == 1
        raise ArgumentError,

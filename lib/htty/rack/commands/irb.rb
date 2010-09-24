@@ -1,28 +1,28 @@
 class HTTY::CLI::Commands::Irb < HTTY::CLI::Command
 
-  # Returns the name of a category under which help for the _app_ command
+  # Returns the name of a category under which help for the _irb_ command
   # should appear.
   def self.category
     'Debug'
   end
 
-  # Returns the arguments for the command-line usage of the _app_ command.
+  # Returns the arguments for the command-line usage of the _irb_ command.
   def self.command_line_arguments
     ''
   end
 
-  # Returns the help text for the _app_ command.
+  # Returns the help text for the _irb_ command.
   def self.help
     'Starts irb'
   end
 
-  # Returns the extended help text for the _app_ command.
+  # Returns the extended help text for the _irb_ command.
   def self.help_extended
     'Starts irb to let you modify the environment. Use it like IRB, using' +
     '#exit brings you right back.'
   end
 
-  # Performs the _app_ command.
+  # Performs the _irb_ command.
   def perform
     unless arguments.length == 0
        raise ArgumentError,
