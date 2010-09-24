@@ -5,11 +5,11 @@ end
 
 require 'rack'
 HTTY::CLI::Commands::Help.register_additional_category("Rack")
+HTTY::CLI::Commands::Help.register_additional_category("Debug")
 
 module HTTY
   module Rack
     VERSION = File.read("#{File.dirname __FILE__}/../../VERSION").chomp
-    
     
     def self.build_app(filename = nil)
       config_file_name = File.basename(filename || find_config_file)
@@ -17,7 +17,7 @@ module HTTY
       app = ::Rack::Builder.new { instance_eval(config_file) }.to_app
       [config_file_name, app]
     end
-
+    
     def self.find_config_file
       if Dir.glob("config.ru").length > 0
         File.join(Dir.pwd,"config.ru")
@@ -28,6 +28,4 @@ module HTTY
       end
     end
   end
-  
-  self.requests_util = HTTY::Rack::RequestsUtil
 end

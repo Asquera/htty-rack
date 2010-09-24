@@ -1,4 +1,6 @@
-class HTTY::CLI::Commands::App < HTTY::CLI::Command
+class HTTY::CLI::Commands::Config < HTTY::CLI::Command
+
+  include HTTY::CLI::CookieClearingCommand
 
   # Returns the name of a category under which help for the _app_ command
   # should appear.
@@ -8,18 +10,18 @@ class HTTY::CLI::Commands::App < HTTY::CLI::Command
 
   # Returns the arguments for the command-line usage of the _app_ command.
   def self.command_line_arguments
-    'constant'
+    'config'
   end
 
   # Returns the help text for the _app_ command.
   def self.help
-    'Sets the active app'
+    'Loads a new config'
   end
 
   # Returns the extended help text for the _app_ command.
   def self.help_extended
-    'Sets the app to the constant provided. The app must be required first.' +
-    'This operation does not clear cookies.'
+    'Loads a config (.ru-File) and sets the built class as the' +
+    'active application. This operation clears cookies.'
   end
 
   # Performs the _app_ command.
@@ -29,10 +31,8 @@ class HTTY::CLI::Commands::App < HTTY::CLI::Command
              "wrong number of arguments (#{arguments.length} for 1)"
     end
     
-    app = Module.const_get(arguments.first)
-    
     add_request_if_has_response do |request|
-      request.app = app
+      request.app_file, request.app = HTTY::Rack::build_app arguments.first
       request
     end
   end

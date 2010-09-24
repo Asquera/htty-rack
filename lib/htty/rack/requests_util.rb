@@ -9,7 +9,7 @@ module HTTY::Rack
       end
       
       def app
-        $app
+        @app
       end
       
       include Rack::Test::Methods
@@ -37,7 +37,7 @@ module HTTY::Rack
       
     private
       def self.request(request)
-        http_response = yield
+        http_response = yield request.app
         headers = []
         http_response.headers.each do |*h|
           headers << h
