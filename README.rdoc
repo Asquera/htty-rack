@@ -1,0 +1,40 @@
+   _________________________ 
+  < no fancy ASCII art here >
+   ------------------------- 
+          \   ^__^
+           \  (oo)\_______
+              (__)\       )\/\
+                  ||----w |
+                  ||     ||
+
+htty-rack[http://www.github.com/Asquera/htty-rack] is an extension to htty[http://htty.github.com] that switches the HTTP backend in favour of a Rack application. For that purpose, it also provides a set of commands for controlling which rack application is used etc.
+
+= Warning
+
+Alpha. No Features guaranteed.
+
+= Installation
+
+Use rubygems:
+
+ $ gem install htty-rack
+
+= Usage
+
+htty-rack uses a different executable than htty. Start htty-rack using:
+
+ $ htty-rack <config-file>
+
+If no config (*.ru) file is given, htty-rack will recursively descend to find a file called "config.ru".
+
+= Examples
+
+Beyond the examples described on the htty[http://htty.github.com] page, htty-rack supports a few other commands:
+
+* app <app> will change the rack appliation in use. The argument must be a ruby constant.
+* config <file> will load a new rackup file and use the application therein.
+* irb starts irb so that you can manipulate the environment.
+
+= Thanks
+
+* Nils Jonsson for writing htty and making this project possible
