@@ -15,6 +15,10 @@ Alpha. No Features guaranteed.
 
 = Installation
 
+At the moment, this only works with the htty fork found at:
+
+  http://github.com/Asquera/htty-rack
+
 Use rubygems:
 
  $ gem install htty-rack
